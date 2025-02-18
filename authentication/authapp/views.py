@@ -32,6 +32,10 @@ def dashboard(request):
     return render(request, 'registration/dashboard.html', {'section':'dashboard'})
 
 
+def home(request):
+    return render(request, 'registration/home.html') 
+
+
 def logged_out(request):
     return render(request, 'registration/logged-out.html') 
 

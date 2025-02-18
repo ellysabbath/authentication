@@ -144,11 +144,3 @@ EMAIL_USE_TLS = True  # Use TLS for a secure connection
 EMAIL_HOST_USER = 'mwananjelaelisha36@gmail.com'  # Your email address
 EMAIL_HOST_PASSWORD = 'wddzpzxrqqetosbq'  # Your email password or an app password
 DEFAULT_FROM_EMAIL = 'mwananjelaelisha36@gmail.com'  # Default from email address
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-}

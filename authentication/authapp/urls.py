@@ -9,6 +9,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),  # Use LoginView for login
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),  # Corrected to LogoutView
     path('logged-out/', views.logged_out, name='logged_out'), 
+    path('', views.home, name='home'),
 # password change
     path('password_change/', auth_views.PasswordChangeView.as_view(),name='password_change'),
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(),name='password_change_done'),
