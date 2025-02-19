@@ -1,0 +1,19 @@
+<!-- settings.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<h1>Settings</h1>
+<ul>
+    {% for setting in settings %}
+        <li>
+            <strong>{{ setting.key }}</strong>: {{ setting.value }}
+        </li>
+    {% endfor %}
+</ul>
+
+<!-- Password Reset Request Link -->
+<a href="{% url 'settings' %}">Forgot your password?</a>
+{% endblock %}

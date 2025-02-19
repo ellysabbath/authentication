@@ -1,0 +1,332 @@
+@import url(//fonts.googleapis.com/css?faminly=Muli);
+/* Reset some default browser styling */
+/* Base styling for the website */
+/* Custom styles to make the menu open to the right */
+
+@media (max-width: 300px) {
+    /* When the screen is small, the menu collapses into a horizontal sidebar */
+    .navbar-collapse {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 250px;
+        background-color: #7fbd7d;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .navbar-collapse.show {
+        transform: translateX(0);
+    }
+
+    /* Style for toggler icon */
+    .navbar-toggler-icon {
+        background-color: #333;
+    }
+
+    .navbar-toggler {
+        border-color: transparent;
+    }
+}
+
+/* Add padding to navbar items to make them more spaced */
+.navbar-nav {
+    margin-right: 20px;
+}
+
+/* When the navbar is toggled, add some space to the left side */
+.navbar-nav li {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+
+/* Styling for the attractive hamburger button */
+.navbar-toggler {
+    border: none;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 1051;
+}
+
+.bar {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+/* Animation for hamburger button (transforming into an X) */
+.navbar-toggler.active .top-bar {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggler.active .middle-bar {
+    opacity: 0;
+}
+
+.navbar-toggler.active .bottom-bar {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Bootstrap default class for showing the navbar on small screens */
+.navbar-collapse.show {
+    display: block;
+}
+
+/* Custom styling for smaller screens (for better view of the navbar) */
+@media (max-width: 300px) {
+    .navbar-collapse {
+        background: linear-gradient(to right, #dfe0e3, #ebecef);
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 250px;
+        height: 100vh;
+        box-shadow: -2px 0px 5px rgba(123, 196, 116, 0.1);
+        z-index: 1050;
+        display: none;
+    }
+    .navbar-collapse.show {
+        display: block;
+    }
+}
+
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.2s ease;
+}
+a:hover {
+    color: #50e5ff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+        /* Form button styled as a link */
+        form button[type="submit"] {
+            background: none;
+            border: none;
+            color: #007bff;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        form button[type="submit"]:hover {
+            color: #15499d;
+            transform: scale(1.1);
+        }
+
+                /* Button styles */
+                .btn-primary {
+                    background-color: #2e156c; /* Coral color */
+                   
+                }
+                .btn-primary:hover {
+                    background-color: rgb(88, 98, 211); /* Tomato color */
+                    
+                    transform: scale(1.05);
+                }
+                .btn-primary:focus, .btn-primary:active {
+                    outline: none;
+                    box-shadow: 0 0 0 0.25rem rgba(255, 99, 71, 0.5); /* Focus effect with a soft glow */
+                }
+
+                
+                /* Global input styles */
+input[type="text"], input[type="password"], input[type="submit"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+   
+    border-radius: 5px;
+    box-sizing: border-box; /* Makes sure padding is included in width */
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus state for inputs */
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Submit button styling */
+.btn-submit {
+    background-color: #007bff; /* Primary color */
+    border: none;
+    color: rgb(38, 34, 164);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    padding: 12px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3; /* Darker shade for hover */
+    transform: scale(1.05); /* Slight scale-up effect */
+}
+
+/* Forgot Password link styling */
+.forgot-password {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease, text-decoration 0.2s ease;
+}
+
+.forgot-password:hover {
+    color: #ff7f50;
+    text-decoration: none;
+}
+
+/* Center the login form */
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Submit button styling */
+.btn-submit {
+    background-color: #007bff; /* Primary color */
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    padding: 12px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3; /* Darker shade for hover */
+    transform: scale(1.05); /* Slight scale-up effect */
+}
+
+/* for image styling */
+/* Card Styles for Email Update */
+.card.email-update-card {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card.email-update-card h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.card.email-update-card p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+
+
+  /* Style for making table headers sticky */
+  table th {
+      position: sticky;
+      top: 0;
+      background-color: #fff;  /* Makes sure header has a white background */
+      z-index: 1;  /* Ensure it stays above table rows */
+  }
+
+  /* Add some padding to make the sticky header look nice */
+  table th, table  {
+      padding: 10px;
+  }
+
+  /* Optional: you can add a shadow to the sticky header for better visibility */
+  table th {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+  /* styling for the table */
+  
+    /* Make the header sticky */
+    th {
+        position: sticky;
+        top: 0;
+        background-color: #f8f9fa; /* You can set a different background color */
+        z-index: 1;
+    }
+
+    /* Make sure table rows below the header have enough padding */
+    td {
+        padding: 8px 10px;
+    }
+
+/* end styiling for the table */
