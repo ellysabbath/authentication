@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Forms{% endblock %}
+
+{% block content %}
+<h1>Forms</h1>
+<ul>
+    {% for form in forms %}
+        <li>
+            <strong>{{ form.title }}</strong><br>
+            {{ form.description }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
