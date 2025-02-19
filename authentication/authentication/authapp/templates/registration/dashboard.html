@@ -1,0 +1,572 @@
+{% extends "base.html" %}
+
+{% block title   %}decons-dashboard, udom west humanities{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-6 text-center">
+<h1 class="text text-success text-center">
+hellow, {{request.user.username}}</h1>
+<p>wellcome to your page</p>
+<p>you can change your password <a href="{% url 'password_change' %}">here</a></p>
+    </div>
+    <div class="col-lg-6 text-center">
+<form action="{% url 'logout' %}" method="POST" style="display: inline;">
+    {% csrf_token %}
+    <button type="submit" style="background: none; border: none; color: inherit; text-decoration: none; padding: 0; font-size: inherit;">
+        Logout
+    </button>
+</div>
+</form>
+</div>
+
+<!-- for form   informations-->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- informations section -->
+<section>
+  <div class="card" id="Informations" data-aos="fade-up" data-aos-delay="100">
+      <div class="card-body">
+          <h5 class="text-center text-primary mb-4" data-aos="fade-up" data-aos-delay="100">Fill the Information Below</h5>
+          
+          
+          <form id="memberForm">
+            
+            <div class="row mb-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-6">
+                    <label for="changamoto" class="form-label text-primary text-center" data-aos="fade-up" data-aos-delay="100">Changamoto za Mshiriki</label>
+                    <select name="changamoto" id="changamoto" required class="form-control text text-primary text-center" data-aos="fade-up" data-aos-delay="100">
+                        <option value disabled selected>changamoto.....</option>
+                        <option value="kielimu">kielimu</option>
+                        <option value="kiafya">kiafya</option>
+                        <option value="kijamii/mahusiano">mahusiano/kijamii</option>
+                        <option value="kifamilia">kifamilia</option>
+                        <option value="mgogoro binafsi">mgogoro binafsi</option>
+                    </select>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <label for="name" class="form-label text-primary text-center" data-aos="fade-up" data-aos-delay="100">Name of Member</label>
+                    <input type="text" class="form-control text-primary text-center" id="name" name="name" required data-aos="fade-up" data-aos-delay="100">
+                </div>
+            </div>
+        
+            <div class="row mb-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <label for="kiroho" class="form-label text-primary text-center" data-aos="fade-up" data-aos-delay="100">Biblia</label>
+                    <select name="Biblia" id="Biblia" class="form-control text-primary text-center" required data-aos="fade-up" data-aos-delay="100">
+                        <option value disabled selected>Biblia....</option>
+                        <option value="ana Biblia">ana Biblia</option>
+                        <option value="hana Biblia">hana Biblia</option>
+                        <option value="atanunua Biblia">atanunua Biblia</option>
+                    </select>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <label for="kesha" class="form-label text-primary text-center" data-aos="fade-up" data-aos-delay="100">Kesha la Asubuhi</label>
+                    <select name="kesha" id="kesha" class="form-control text-primary text-center">
+                        <option value disabled selected>kesha la Asubuhi...</option>
+                        <option value="ana kesha la Asubuhi">ana kesha la Asubuhi</option>
+                        <option value="hana kesha la Asubuhi">hana kesha la Asubuhi</option>
+                        <option value="atanunua">atanunua</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <label for="date" class="text text-primary text-center" data-aos="fade-up" data-aos-delay="100">tarehe</label>
+                <input type="date" id="date" name="date" class="form-control" required data-aos="fade-up" data-aos-delay="100">
+              </div>
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <label for="lesson" class="text text-primary text-center" data-aos="fade-up" data-aos-delay="100">lesson</label>
+                <select name="lesson" id="lesson" class="form-control text text-center text-primary" required data-aos="fade-up" data-aos-delay="100">
+                  <option value disabled selected>lesson...</option>
+                  <option value="ana lesson">ana lesson</option>
+                  <option value="hana lesson">hana lesson</option>
+                  <option value="atanunua lesson">atanunua lesson</option>
+                </select>
+              </div>
+            </div>
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <label for="deacon" class="text text-center text text-primary" data-aos="fade-up" data-aos-delay="100">jina la shemasi</label>
+                <input type="text" class="text-center text-primary form-control" name="deacon" id="deacon" required placeholder="jina la shemasi..." data-aos="fade-up" data-aos-delay="100">
+              </div>
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <label for="nyimbo" class="text-center text-primary" data-aos="fade-up" data-aos-delay="100">kitabu cha nyimbo</label>
+                <select name="nyimbo" id="nyimbo" class="form-control text text-center text-primary" data-aos="fade-up" data-aos-delay="100" required>
+                  <option value disabled selected>kitabu cha nyimbo...</option>
+                  <option value="ana kitabu cha nyimbo">ana kitabu cha nyimbo</option>
+                  <option value="hana kitabu cha nyimbo">hana kitabu cha nyimbo</option>
+                  <option value="atanunua kitabu cha nyimbo">atanunua kitabu cha nyimbo</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <label for="maombi" class="text text-center text-primary" data-aos="fade-up" data-aos-delay="100">maombi</label>
+                <select name="maombi" id="maombi" class="form-control text-center text-primary" data-aos="fade-up" data-aos-delay="100" required>
+                  <option value disabled selected>maombi</option>
+                  <option value="anafanya maombi">anafanya maombi</option>
+                  <option value="hafanyi maombi">hafanyi maombi</option>
+                </select>
+              </div>
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <label for="maombitime" class="text-center text-primary" data-aos="fade-up" data-aos-delay="100">muda wa maombi</label>
+                <input type="time" name="maombitime" id="maombitime" class="form-control text-center text-primary" data-aos="fade-up" data-aos-delay="100">
+              </div>
+            </div>
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <label for="ibada" class="text-primary text-center" data-aos="fade-up" data-aos-delay="100">ibada</label>
+                <select name="ibada" id="ibada" class="text text-center text-primary form-control" data-aos="fade-up" data-aos-delay="100" required>
+                  <option value disabled selected>ibada ipo?.....</option>
+                  <option value="anafanya ibada">anafanya ibada</option>
+                  <option value="hafanyi ibada">hafanyi ibada</option>
+                  <option value="ataanza kufanya ibada">ataanza kufanya ibada</option>
+                </select>
+              </div>
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <label for="jtano" class="text-primary text-center" data-aos="fade-up" data-aos-delay="100">jumatano</label>
+                <select name="jtano" id="jtano" class="form-control text-center text-primary" required data-aos="fade-up" data-aos-delay="100">
+                  <option value selected disabled>ibada ya jumatano...</option>
+                  <option value="anafanya ibada ya jumatano">anafanya ibada tya jumatano</option>
+                  <option value="hafanyi ibada ya jumatano">hafanyi ibada ya jumatano</option>
+                  <option value="ataanza kufanya ibada ya jumatano">ataanza kufanya ibada ya jumatano</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <label for="ijumaa" class="text text-center text-primary" data-aos="fade-up" data-aos-delay="100">ijumaa</label>
+                <select name="ijumaa" id="ijumaa" class="text-center text-primary form-control" required data-aos="fade-up" data-aos-delay="100">
+                  <option value disabled selected>ibada ya ijumaa...</option>
+                  <option value="anafanya ibada ya ijumaa">anafanya ibada ya ijumaa</option>
+                  <option value="hafanyi ibada ya ijumaa">hafanyi ibada ya ijumaa</option>
+                  <option value="ataanza kufannya ibada ya ijumaa">ataanza kufanya ibada ya ijumaa</option>
+                </select>
+              </div>
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <label for="sabato" class="text-center text-primary" data-aos="fade-up" data-aos-delay="100">sabato</label>
+                <select name="sabato" id="sabato" class="text-center text-primary form-control" data-aos="fade-up" data-aos-delay="100" required>
+                  <option value selected disabled>ibada ya sabato</option>
+                  <option value="anahudhuria ibada ya sabato">anahudhuria ibada ya sabato</option>
+                  <option value="hahudhurii ibada ya sabato">hahudhurii  ibada ya sanbato</option>
+                  <option value="ataanza kuhudhuria ibada ya sabato">ataanza kuhudhuria sabato</option>
+                </select>
+              </div>
+            </div><br>
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+              <!-- Large Card for Checkboxes -->
+              <div class="col-lg-12 mb-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                  <div class="card-body d-flex flex-wrap justify-content-between" data-aos="fade-up" data-aos-delay="100">
+                    <!-- Zaka Checkbox -->
+                     <div class="row" data-aos="fade-up" data-aos-delay="100">
+                      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="form-check mb-3" data-aos="fade-up" data-aos-delay="100">
+                      <input type="checkbox" class="form-check-input" id="zaka" name="zaka" data-aos="fade-up" data-aos-delay="100">
+                      <label class="form-check-label text-primary" for="zaka" data-aos="fade-up" data-aos-delay="100">Zaka</label>
+                    </div>
+            
+                    <!-- Sadaka Checkbox -->
+                    <div class="form-check mb-3" data-aos="fade-up" data-aos-delay="100">
+                      <input type="checkbox" class="form-check-input" id="sadaka" name="sadaka" data-aos="fade-up" data-aos-delay="100">
+                      <label class="form-check-label text-primary" for="sadaka" data-aos="fade-up" data-aos-delay="100">Sadaka</label>
+                    </div>
+                    </div>
+
+                    </div>
+                    <!-- Makambi Checkbox -->
+                     <div class="row" data-aos="fade-up" data-aos-delay="100">
+                      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="form-check mb-3" data-aos="fade-up" data-aos-delay="100">
+                      <input type="checkbox" class="form-check-input" id="makambi" name="makambi" data-aos="fade-up" data-aos-delay="100">
+                      <label class="form-check-label text-primary" data-aos="fade-up" data-aos-delay="100" for="makambi">Makambi</label>
+                    </div>
+                    
+
+            
+                    <!-- Michango Mingine Checkbox -->
+                    <div class="form-check mb-3" data-aos="fade-up" data-aos-delay="100">
+                      <input type="checkbox" class="form-check-input" id="michango" name="michango" data-aos="fade-up" data-aos-delay="100">
+                      <label class="form-check-label text-primary" for="michango" data-aos="fade-up" data-aos-delay="100">Michango Mingine</label>
+                    </div>
+                    </div>
+                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <label for="misaada" class="text text-center text-primary" data-aos="fade-up" data-aos-delay="100">misaada</label>
+                <select name="misaada" id="misaada" class="text-center text-primary form-control" data-aos="fade-up" data-aos-delay="100" required>
+                  <option value disabled selected>misaada....</option>
+                  <option value="anatoa misaada">anatoa misaada</option>
+                  <option value="hatoi misaada">hatoi misaada</option>
+                  <option value="ata anza kutoa misaada">ataanza kutoa misaada kwa wahitaji</option>
+                </select>
+              </div>
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <label for="thamani" data-aos="fade-up" data-aos-delay="100" class="text text-center text-primary">Thamani ya msaada</label>
+
+                <input type="text" data-aos="fade-up" data-aos-delay="100" name="thamani" id="thamani" class="form-control text-center text-primary" required>
+                 
+              </div>
+            </div>
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <label for="injili" data-aos="fade-up" data-aos-delay="100" class="text-primary text-center">injili</label>
+                <select name="injili" data-aos="fade-up" data-aos-delay="100" id="injili" class="text text-center text-primary form-control" required>
+                  <option value disabled selected>Thamani ya msaada....</option>
+                  <option value="anahubiri injili">anahubiri injili</option>
+                  <option value="hahubiri injili">hahubiri injili</option>
+                  <option value="atahubiri injili">atahubiri injili</option>
+                </select>
+              </div>
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <label for="mudawakuhubiri" data-aos="fade-up" data-aos-delay="100" class="text-center text-primary">muda wa kuhubiri</label>
+                <input type="date" data-aos="fade-up" data-aos-delay="100" class="text-center text-primary form-control" id="mudawakuhubiri" name="mudawakuhubiri">
+              </div>
+            </div>
+        
+            <div class="container mt-4 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+                <button type="submit" class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="100">Submit</button>
+            </div>
+        </form>
+        
+        <!-- script -->
+<!-- script -->
+<script src="https://cdn.jsdelivr.net/npm/purecounterjs@1.1.1/dist/purecounter_vanilla.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.getElementById('memberForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent default form submission
+
+  const formData = new FormData(this);
+
+  const data = {
+      changamoto: formData.get('changamoto'),
+      name: formData.get('name'),
+      Biblia: formData.get('Biblia'),
+      kesha: formData.get('kesha'),
+      date: formData.get('date'),
+      lesson: formData.get('lesson'),
+      nyimbo: formData.get('nyimbo'),
+      maombi: formData.get('maombi'),
+      maombitime: formData.get('maombitime'),
+      ibada: formData.get('ibada'),
+      jtano: formData.get('jtano'),
+      ijumaa: formData.get('ijumaa'),
+      sabato: formData.get('sabato'),
+      zaka: formData.get('zaka') ? true : false,
+      sadaka: formData.get('sadaka') ? true : false,
+      makambi: formData.get('makambi') ? true : false,
+      michango: formData.get('michango') ? true : false,
+      misaada: formData.get('misaada'),
+      thamani: formData.get('thamani'),
+      injili: formData.get('injili'),
+      mudawakuhubiri: formData.get('mudawakuhubiri'),
+      deacon: formData.get('deacon'),
+  };
+
+  const authToken = 'your-auth-token';  // You can store the token in localStorage or fetch from cookies
+
+  fetch('http://192.168.137.1:8000/auth/manage/create_informations/', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,  // Correct header format
+      },
+      body: JSON.stringify(data),
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log('Success:', data);
+      Swal.fire({
+          icon: 'success',
+          title: 'Form Submitted!',
+          text: 'Your form has been submitted successfully!',
+          confirmButtonText: 'Okay'
+      }).then(() => {
+          document.getElementById('memberForm').reset();
+      });
+  })
+  .catch((error) => {
+      console.error('Error:', error);
+      Swal.fire({
+          icon: 'error',
+          title: 'Error!',
+          text: 'An error occurred. Please try again later.',
+          confirmButtonText: 'Okay'
+      });
+  });
+});
+
+</script>
+
+    <!-- script -->
+   </div>
+  </div>
+</section><br><br>
+
+  <section class="section">
+    <div class="card">
+        <h5 class="card-title text-center text-primary ">Taarifa za mashemasi za utendaji kazi kwa ufupi</h5>
+        <div class="card-body">
+            <div class="table-container">
+                <div style="max-height: 300px; overflow-x: auto; overflow-y: auto;">
+<!-- Table for displaying the reports -->
+<table id="reportTable" class="table table-striped table-bordered datatable">
+  <thead>
+      <tr>
+          <th>#</th>
+          <th>Deacon Name</th>
+          <th>Date</th>
+          <th>Visited Members</th>
+      </tr>
+  </thead>
+  <tbody>
+      <!-- Table rows will be populated dynamically -->
+  </tbody>
+</table>
+
+<!-- The total visited members -->
+<h2 class="text-secondary text-center">
+  <span id="totalVisitedMembers" data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
+</h2>
+
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- script to fetch data from the database and populating to the ablet -->
+    <script>
+      // URL of the API
+      const apiUrl = 'http://192.168.137.1:8000/auth/deacons/view-report/';
+  
+      // Function to fetch reports and populate the table
+      function fetchReports() {
+          // Make a GET request to the API
+          fetch(apiUrl)
+              .then(response => {
+                  // Check if the response is successful
+                  if (response.ok) {
+                      return response.json();
+                  } else {
+                      throw new Error('Failed to fetch reports');
+                  }
+              })
+              .then(data => {
+                  // Get the table body element
+                  const tableBody = document.querySelector('#reportTable tbody');
+                  tableBody.innerHTML = ''; // Clear existing rows (if any)
+  
+                  let totalVisitedMembers = 0; // Variable to hold the total of 'jumla'
+  
+                  // Loop through the fetched data and populate the table
+                  data.forEach((report, index) => {
+                      // Create a new row
+                      const row = document.createElement('tr');
+  
+                      // Add cells to the row with data
+                      row.innerHTML = `
+                          <td>${index + 1}</td>
+                          <td>${report.name}</td>
+                          <td>${report.date}</td>
+                          <td>${report.jumla}</td>
+                      `;
+  
+                      // Convert 'jumla' to a number and add to the total count
+                      totalVisitedMembers += parseInt(report.jumla) || 0;  // Handle invalid 'jumla' values
+  
+                      // Append the row to the table body
+                      tableBody.appendChild(row);
+                  });
+  
+                  // Display the total of visited members in the designated <span> element
+                  const totalElement = document.querySelector('#totalVisitedMembers');
+                  
+                  // Set the final value in the PureCounter element
+                  totalElement.setAttribute('data-purecounter-end', totalVisitedMembers);
+  
+                  // Trigger the counter update by setting the attribute value
+                  new PureCounter();
+              })
+              .catch(error => {
+                  console.error('Error fetching reports:', error);
+              });
+      }
+  
+      // Call the fetchReports function when the page loads
+      document.addEventListener('DOMContentLoaded', fetchReports);
+  </script>
+  
+  
+  
+     <!-- end-->
+  </section>
+
+<!-- contact section  -->
+
+<section id="contact" class="contact section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2 class="text text-center text-primary">Contact</h2>
+      <p class="xt text-primary">
+        By contacting us, you may get rapid help and filter your problem easily for future improvement of our services
+      </p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-5">
+
+          <div class="info-wrap">
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-geo-alt flex-shrink-0"></i>
+              <div>
+                <h3 class="text-primary">Address</h3>
+                <p class="text-secondary-emphasis">Iyumbu street, Dodoma, Tanzania</p>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <h3  class="text-primary">Call Us</h3>
+                <p class="text-secondary-emphasis">+255 742 57 8691</p>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+              <i class="bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h3 class="text-primary">Email Us</h3>
+                <p class="text-secondary-emphasis">mwananjelaelisha36@gmail.com</p>
+              </div>
+            </div><!-- End Info Item -->
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <form id="contactForm" data-aos="fade-up" data-aos-delay="200">
+            <div class="row gy-4">
+              <div class="col-md-6">
+                <label for="yourname-field" class="pb-2">Your Name</label>
+                <input type="text" name="yourname" id="yourname-field" class="form-control" required="">
+              </div>
+          
+              <div class="col-md-6">
+                <label for="yourmaile-field" class="pb-2">Your Email</label>
+                <input type="email" class="form-control" name="yourmaile" id="yourmaile-field" required="">
+              </div>
+          
+              <div class="col-md-12">
+                <label for="yoursubject-field" class="pb-2">Subject</label>
+                <input type="text" class="form-control" name="yoursubject" id="yoursubject-field" required="">
+              </div>
+          
+              <div class="col-md-12">
+                <label for="yournamessage-field" class="pb-2">Message</label>
+                <textarea class="form-control" name="yournamessage" rows="10" id="yournamessage-field" required=""></textarea>
+              </div>
+          
+              <div class="col-md-12 text-center">
+                <div class="loading" style="display: none;">Loading...</div>
+                <div class="error-message" style="display: none;"></div>
+                <div class="sent-message" style="display: none;">Your message has been sent. Thank you!</div>
+                
+                <button type="submit" id="submission" class="btn btn-primary">Send Message</button>
+              </div>
+            </div>
+          </form>
+          
+          <!-- SweetAlert2 CDN -->
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+          
+          <!-- Script to handle form submission -->
+          <script>
+            document.getElementById('contactForm').addEventListener('submit', function (event) {
+              event.preventDefault(); // Prevent the form from submitting the traditional way
+          
+              // Get form data
+              const formData = new FormData(event.target);
+              const data = {
+                yourname: formData.get('yourname'),
+                yourmaile: formData.get('yourmaile'),
+                yoursubject: formData.get('yoursubject'),
+                yournamessage: formData.get('yournamessage')
+              };
+          
+              // Show loading indicator
+              document.querySelector('.loading').style.display = 'block';
+          
+              // Send the form data to the API
+              fetch('http://192.168.137.1:8000/api/contact/create-contact/', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+              })
+                .then(response => response.json())
+                .then(data => {
+                  // Hide the loading indicator
+                  document.querySelector('.loading').style.display = 'none';
+          
+                  // Check if the submission was successful
+                  if (data.message === 'Contact saved successfully and email sent to admin!') {
+                    // Show success message (SweetAlert)
+                    Swal.fire({
+                      title: 'Success!',
+                      text: 'Your message has been sent. Thank you for contacting us!',
+                      icon: 'success',
+                      confirmButtonText: 'OK'
+                    }).then(() => {
+                      // Reset the form after success
+                      document.getElementById('contactForm').reset();
+                      // Show success message on the page
+                      document.querySelector('.sent-message').style.display = 'block';
+                    });
+                  } else {
+                    // Show error message
+                    document.querySelector('.error-message').innerHTML = 'There was an error. Please try again later.';
+                    document.querySelector('.error-message').style.display = 'block';
+                  }
+                })
+                .catch(error => {
+                  // Hide the loading indicator
+                  document.querySelector('.loading').style.display = 'none';
+          
+                  // Show error message
+                  document.querySelector('.error-message').innerHTML = 'There was an error. Please try again later.';
+                  document.querySelector('.error-message').style.display = 'block';
+                  console.error('Error:', error);
+                });
+            });
+          </script>
+          
+          
+          
+        </div><!-- End Contact Form -->
+
+      </div>
+
+    </div>
+
+  </section><!-- /Contact Section -->
+
+
+<!-- end contact section  -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
